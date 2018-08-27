@@ -1,20 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing.Imaging;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.ExceptionServices;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Tesseract;
-using Leptonica;
-using System.Threading;
-using System.Runtime.InteropServices;
-using System.Diagnostics;
+
 
 namespace ParseApps
 {
@@ -23,334 +11,61 @@ namespace ParseApps
     {
         
         //KeyDown = new KeyEventHandler(this, keyboard_KeyDown);
+        bool captureFirst           = false;
+        bool captureSecond          = false;
+        bool captureMousePosition   = false;
+        bool pickColor              = false;
+        bool optionsComing          = false;
 
 
-        int[] leftTop = new int[2];
-        int[] rightDown = new int[2];
-        bool captureFirst = false;
-        bool captureSecond = false;
-        bool pickColor = false;
-        Color balloonColor = Color.FromArgb(253, 253, 254);
+        VirtualMouse myMouse = new VirtualMouse();
+
+        ImagesTreatment myImage = new ImagesTreatment();
+
+        FinalText myText = new FinalText();
+
+        Characters myCharacters = new Characters();
+
+        List<Button> charButtons = new List<Button>();
+
+        String lineToAdd = "";
+        
+
         delegate void SetTextCallback(string text);
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void coordinatesButton_Click(object sender, EventArgs e)
-        {
-            captureFirst = true;
-            lefTopLabelContainer.Text = "J to capture";
-
-        }
-
-
-        [HandleProcessCorruptedStateExceptions]
-        [SecurityCritical]
-        private void CaptureMyScreen(int xheight, int xwidth)
-
-        {
-
-            try
-            {
-                
-                Bitmap captureBitmap = new Bitmap(xwidth, xheight, PixelFormat.Format32bppArgb);
-                Point leftTopCorner = new Point(leftTop[0], leftTop[1]);
-                Rectangle captureRectangle = new Rectangle(leftTopCorner, captureBitmap.Size);
-                System.Drawing.Graphics captureGraphics = System.Drawing.Graphics.FromImage(captureBitmap);
-                captureGraphics.CopyFromScreen(captureRectangle.Left, captureRectangle.Top, 0, 0, captureRectangle.Size);
-                // Capturing image and saving
-                //imagePickedBox.Image = captureBitmap;
-                Color auxColor;
-                int[] leftTopBalloon = { 0, 0 };
-                int[] rightDownBalloon = { 0, 0 };
-                int i = 0;
-                int j = 0;
-                bool corner = false;
-                colorPickerLabel.Text = "Height, Width: " +  captureBitmap.Height + ", " + captureBitmap.Width + Environment.NewLine + "Size: " + captureBitmap.Size + Environment.NewLine;
-                imagePickedBox.Image = captureBitmap;
-                Color pasada = Color.FromArgb(255, 244, 66, 66);
-                while (!corner && j < captureBitmap.Height - 1)
-                {
-                    while (!corner && i < captureBitmap.Width - 1)
-                    {
-                        //Debug.WriteLine("J: " + j);
-                        auxColor = captureBitmap.GetPixel(i, j);
-                        if (auxColor == balloonColor)
-                        {
-                            if (leftTopBalloon[0] == 0 && leftTopBalloon[1] == 0)
-                            {
-                                leftTopBalloon[0] = i;
-                                leftTopBalloon[1] = j;
-                            }
-                            else if (i < leftTopBalloon[0])
-                            {
-                                leftTopBalloon[0] = i;
-                                leftTopBalloon[1] = j;
-                            }
-                            else if(captureBitmap.GetPixel(i, j-3) == captureBitmap.GetPixel(i, j) && captureBitmap.GetPixel(i - 1, j) != captureBitmap.GetPixel(i, j))
-                            {
-                                if (captureBitmap.GetPixel(i + 33, j) == captureBitmap.GetPixel(i, j)){
-                                    corner = true;
-                                }
-                            }
-                            //Debug.WriteLine(i + ", " + j);
-                        }
-                        else
-                        {
-                            captureBitmap.SetPixel(i, j, pasada);
-                        }
-                        i++;
-                    }
-                    j++;
-                    i = 0;
-                }
-                corner = false;
-                i = 0;
-                pasada = Color.FromArgb(0, 0, 0);
-                while (!corner)
-                {
-                    if(captureBitmap.GetPixel(leftTopBalloon[0], leftTopBalloon[1]+i) != captureBitmap.GetPixel(leftTopBalloon[0], leftTopBalloon[1] + i + 1)){
-                        Debug.WriteLine("Actual: " + captureBitmap.GetPixel(leftTopBalloon[0], leftTopBalloon[1] + i) + "Siguiente: " + captureBitmap.GetPixel(leftTopBalloon[0], leftTopBalloon[1] + i + 1));
-                        corner = true;
-                        rightDownBalloon[1] = leftTopBalloon[1] + i;
-                    }
-                    else
-                    {
-                        captureBitmap.SetPixel(leftTopBalloon[0], leftTopBalloon[1] + i, pasada);
-                    }
-                    i++;
-                }
-                i = 0;
-                corner = false;
-                while (!corner)
-                {
-                    if (captureBitmap.GetPixel(leftTopBalloon[0] + i, rightDownBalloon[1]) != captureBitmap.GetPixel(leftTopBalloon[0] + i + 1, rightDownBalloon[1]))
-                    {
-                        corner = true;
-                        rightDownBalloon[0] = leftTopBalloon[0] + i;
-                    }
-                    else
-                    {
-                        captureBitmap.SetPixel(leftTopBalloon[0] + i, rightDownBalloon[1], pasada);
-                    }
-                    i++;
-                }
-                int widthBalloon = rightDownBalloon[0] - leftTopBalloon[0];
-                int heightBalloon = rightDownBalloon[1] - leftTopBalloon[1];
-                colorPickerLabel.Text = "X: " + leftTopBalloon[0] + " Y: " + leftTopBalloon[1] + Environment.NewLine + "Height, Width: " +  captureBitmap.Height + ", " + captureBitmap.Width + Environment.NewLine + "Size: " + captureBitmap.Size + Environment.NewLine;
-
-                // Capturing Balloon and saving
-                //Point leftTopCornerBalloon = new Point(leftTopBalloon[0], leftTopBalloon[1]);
-                Rectangle cropRectangleBalloon = new Rectangle(leftTopBalloon[0], leftTopBalloon[1], widthBalloon, heightBalloon);
-                Bitmap captureBitmapCropped = new Bitmap(cropRectangleBalloon.Width, cropRectangleBalloon.Height, PixelFormat.Format32bppArgb);
-                using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(captureBitmapCropped))
-                {
-                    g.DrawImage(captureBitmap, new Rectangle(0, 0, captureBitmapCropped.Width, captureBitmapCropped.Height),
-                                     cropRectangleBalloon,
-                                     GraphicsUnit.Pixel);
-                }
-                imagePickedBox.Image = captureBitmapCropped;
-              
-                colorPickerLabel.Text = "X: " + leftTopBalloon[0] + " Y: " + leftTopBalloon[1] + Environment.NewLine + "Height, Width: " +  captureBitmap.Height + ", " + captureBitmap.Width + Environment.NewLine + "Size: " + captureBitmap.Size + Environment.NewLine;
-
-
-                captureBitmapCropped.Save("imageSaved.bmp");
-                convertImageToText();
-
-            }
-
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-
-            }
-
-        }
-
-        private void CaptureMyScreen2(int xheight, int xwidth)
-
-        {
-
-            try
-            {
-
-                Bitmap captureBitmap = new Bitmap(xwidth, xheight, PixelFormat.Format32bppArgb);
-                Point leftTopCorner = new Point(leftTop[0], leftTop[1]);
-                Rectangle captureRectangle = new Rectangle(leftTopCorner, captureBitmap.Size);
-                System.Drawing.Graphics captureGraphics = System.Drawing.Graphics.FromImage(captureBitmap);
-                captureGraphics.CopyFromScreen(captureRectangle.Left, captureRectangle.Top, 0, 0, captureRectangle.Size);
-                // Capturing image and saving
-                //imagePickedBox.Image = captureBitmap;
-                Color auxColor;
-                int[] leftTopBalloon = { 0, 0 };
-                int[] rightDownBalloon = { 0, 0 };
-                int i = 0;
-                int j = 0;
-                bool corner = false;
-                colorPickerLabel.Text = "Height, Width: " + captureBitmap.Height + ", " + captureBitmap.Width + Environment.NewLine + "Size: " + captureBitmap.Size + Environment.NewLine;
-                imagePickedBox.Image = captureBitmap;
-                Color pasada = Color.FromArgb(255, 244, 66, 66);
-                while (!corner && j < captureBitmap.Height - 1)
-                {
-                    while (!corner && i < captureBitmap.Width - 1)
-                    {
-                        //Debug.WriteLine("J: " + j);
-                        auxColor = captureBitmap.GetPixel(i, j);
-                        if (auxColor == balloonColor)
-                        {
-                            if (leftTopBalloon[0] == 0 && leftTopBalloon[1] == 0)
-                            {
-                                leftTopBalloon[0] = i;
-                                leftTopBalloon[1] = j;
-                            }
-                            else if (i < leftTopBalloon[0])
-                            {
-                                leftTopBalloon[0] = i;
-                                leftTopBalloon[1] = j;
-                            }
-                            else if (captureBitmap.GetPixel(i, j - 3) == captureBitmap.GetPixel(i, j) && captureBitmap.GetPixel(i - 1, j) != captureBitmap.GetPixel(i, j))
-                            {
-                                corner = true;
-                            }
-                            //Debug.WriteLine(i + ", " + j);
-                        }
-                        else
-                        {
-                            captureBitmap.SetPixel(i, j, pasada);
-                        }
-                        i++;
-                    }
-                    j++;
-                    i = 0;
-                }
-                corner = false;
-                i = 0;
-                pasada = Color.FromArgb(0, 0, 0);
-                while (!corner)
-                {
-                    if (captureBitmap.GetPixel(leftTopBalloon[0], leftTopBalloon[1] + i) != captureBitmap.GetPixel(leftTopBalloon[0], leftTopBalloon[1] + i + 1))
-                    {
-                        Debug.WriteLine("Actual: " + captureBitmap.GetPixel(leftTopBalloon[0], leftTopBalloon[1] + i) + "Siguiente: " + captureBitmap.GetPixel(leftTopBalloon[0], leftTopBalloon[1] + i + 1));
-                        corner = true;
-                        rightDownBalloon[1] = leftTopBalloon[1] + i;
-                    }
-                    else
-                    {
-                        captureBitmap.SetPixel(leftTopBalloon[0], leftTopBalloon[1] + i, pasada);
-                    }
-                    i++;
-                }
-                i = 0;
-                corner = false;
-                while (!corner)
-                {
-                    if (captureBitmap.GetPixel(leftTopBalloon[0] + i, rightDownBalloon[1]) != captureBitmap.GetPixel(leftTopBalloon[0] + i + 1, rightDownBalloon[1]))
-                    {
-                        corner = true;
-                        rightDownBalloon[0] = leftTopBalloon[0] + i;
-                    }
-                    else
-                    {
-                        captureBitmap.SetPixel(leftTopBalloon[0] + i, rightDownBalloon[1], pasada);
-                    }
-                    i++;
-                }
-                int widthBalloon = rightDownBalloon[0] - leftTopBalloon[0];
-                int heightBalloon = rightDownBalloon[1] - leftTopBalloon[1];
-                colorPickerLabel.Text = "X: " + leftTopBalloon[0] + " Y: " + leftTopBalloon[1] + Environment.NewLine + "Height, Width: " + captureBitmap.Height + ", " + captureBitmap.Width + Environment.NewLine + "Size: " + captureBitmap.Size + Environment.NewLine;
-
-                // Capturing Balloon and saving
-                //Point leftTopCornerBalloon = new Point(leftTopBalloon[0], leftTopBalloon[1]);
-                Rectangle cropRectangleBalloon = new Rectangle(leftTopBalloon[0], leftTopBalloon[1], widthBalloon, heightBalloon);
-                Bitmap captureBitmapCropped = new Bitmap(cropRectangleBalloon.Width, cropRectangleBalloon.Height, PixelFormat.Format32bppArgb);
-                using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(captureBitmapCropped))
-                {
-                    g.DrawImage(captureBitmap, new Rectangle(0, 0, captureBitmapCropped.Width, captureBitmapCropped.Height),
-                                     cropRectangleBalloon,
-                                     GraphicsUnit.Pixel);
-                }
-                imagePickedBox.Image = captureBitmap;
-
-                colorPickerLabel.Text = "X: " + leftTopBalloon[0] + " Y: " + leftTopBalloon[1] + Environment.NewLine + "Height, Width: " + captureBitmap.Height + ", " + captureBitmap.Width + Environment.NewLine + "Size: " + captureBitmap.Size + Environment.NewLine;
-
-
-                captureBitmapCropped.Save("imageSaved.bmp");
-                convertImageToText();
-
-            }
-
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-
-            }
-
-        }
-
-
-        private void cutBalloon()
-        {
+            charButtons.Add(youButton);
+            charButtons.Add(narratorButton);
+            charButtons.Add(charButton3);
+            charButtons.Add(charButton4);
+            charButtons.Add(charButton5);
+            charButtons.Add(charButton6);
+            charButtons.Add(charButton7);
+            charButtons.Add(charButton8);
+            charButtons.Add(charButton9);
+            charButtons.Add(charButton10);
+            charButtons.Add(charButton11);
+            charButtons.Add(charButton12);
+            charButtons.Add(charButton13);
+            charButtons.Add(charButton14);
+            charButtons.Add(charButton15);
+            charButtons.Add(charButton16);
+            charButtons.Add(charButton17);
+            charButtons.Add(charButton18);
+            charButtons.Add(charButton19);
+            charButtons.Add(charButton20);
             
-
-        }
-        private void convertImageToText()
-        {
-            try
-            {
-                string dataPath = "./tessdata";
-                string language = "eng";
-                string inputFile = "./imageSaved.bmp";
-                OcrEngineMode oem = OcrEngineMode.DEFAULT;
-                PageSegmentationMode psm = PageSegmentationMode.AUTO_OSD;
-
-
-                TessBaseAPI tessBaseAPI = new TessBaseAPI();
-
-                if (!tessBaseAPI.Init(dataPath, language, oem))
-                {
-                    throw new Exception("Could not initialize tesseract.");
-                }
-
-                // Set the Page Segmentation mode
-                tessBaseAPI.SetPageSegMode(psm);
-
-                // Set the input image
-                tessBaseAPI.SetImage(inputFile);
-
-                // Recognize image
-                tessBaseAPI.Recognize();
-
-                ResultIterator resultIterator = tessBaseAPI.GetIterator();
-
-                // Extract text from result iterator
-                StringBuilder stringBuilder = new StringBuilder();
-                PageIteratorLevel pageIteratorLevel = PageIteratorLevel.RIL_WORD;// RIL_PARA;
-                do
-                {
-                    stringBuilder.Append(resultIterator.GetUTF8Text(pageIteratorLevel) + " ");
-                } while (resultIterator.Next(pageIteratorLevel));
-
-                tessBaseAPI.Dispose();
-                textParsedBox.Text = stringBuilder.ToString().Trim();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
 
-
-        private void coordinatesButton_KeyDown(object sender, KeyEventArgs e)
+        ////////////////////////Keyboard controls////////////////////////////////////
+        private void CoordinatesButton_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyValue == (char)Keys.J && captureFirst)
             {
-                leftTop[0] = MousePosition.X;
-                leftTop[1] = MousePosition.Y;
-                lefTopLabelContainer.Text = "X: " + leftTop[0] + " Y: " + leftTop[1];
+                myImage.SetLeftTop(MousePosition.X, MousePosition.Y);
+                lefTopLabelContainer.Text = "X: " + myImage.GetLeftTop().X + " Y: " + myImage.GetLeftTop().Y;
                 captureFirst = false;
                 captureSecond = true;
                 rightDownLabelContainer.Text = "K to capture";
@@ -358,11 +73,17 @@ namespace ParseApps
             }
             if (e.KeyValue == (char)Keys.K && captureSecond)
             {
-                rightDown[0] = MousePosition.X;
-                rightDown[1] = MousePosition.Y;
-                rightDownLabelContainer.Text = "X: " + rightDown[0] + " Y: " + rightDown[1];
+                myImage.SetRightDown(MousePosition.X, MousePosition.Y);
+                rightDownLabelContainer.Text = "X: " + myImage.GetRightDown().X + " Y: " + myImage.GetRightDown().Y;
                 captureFirst = false;
                 captureSecond = false;
+
+            }
+            if (e.KeyValue == (char)Keys.K && captureMousePosition)
+            {
+                myMouse.SetMouseToClick(MousePosition.X, MousePosition.Y);
+                mousePositionLabel.Text = "X: " + myMouse.GetMouseToClick().X + " Y: " + myMouse.GetMouseToClick().Y;
+                captureMousePosition = false;
 
             }
             if (e.KeyValue == (char)Keys.X && pickColor)
@@ -371,61 +92,261 @@ namespace ParseApps
                 Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height);
                 System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bitmap);
                 g.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
-                balloonColor = bitmap.GetPixel(MousePosition.X, MousePosition.Y);
+                myImage.SetBalloonColor(bitmap.GetPixel(MousePosition.X, MousePosition.Y));
                 pickColor = false;
-                colorPickerLabel.Text = "R: " + balloonColor.R + " G: " + balloonColor.G + " B: " + balloonColor.B;
+                colorPickerLabel.Text = "R: " + myImage.GetBallonColor().R + " G: " + myImage.GetBallonColor().G + " B: " + myImage.GetBallonColor().B;
 
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void CoordinatesButton_Click(object sender, EventArgs e)
         {
+            captureFirst = true;
+            lefTopLabelContainer.Text = "J to capture";
 
-            int width = rightDown[0] - leftTop[0];
-            int height = rightDown[1] - leftTop[1];
-            CaptureMyScreen2(height, width);
-            /*OpenFileDialog openFile = new OpenFileDialog();
-            if (openFile.ShowDialog() == DialogResult.OK)
-            {
-                var img = new Bitmap(openFile.FileName);
-                imagePickedBox.Image = img;
-                var pix = PixConverter.ToPix(img);
-                var ocr = new TesseractEngine("./tessdata", "eng");
-                var page = ocr.Process(img);
-                textParsedBox.Text = page.GetText();
-            }*/
         }
 
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            textParsedBox.Text = myImage.GetTextParsed();
+            imagePickedBox.Image = myImage.GetImageResult();
+            /*myMouse.MoveTo();
+            myMouse.LeftClick();*/
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            captureMousePosition = true;
+            mousePositionLabel.Text = "Press K to capture";
+        }
         private void colorPickerButton_Click(object sender, EventArgs e)
         {
             pickColor = true;
             colorPickerLabel.Text = "X to capture color";
         }
 
-        
-        private void colorPickerButton_KeyDown(object sender, KeyEventArgs e)
+        private void addTextButton_Click(object sender, EventArgs e)
         {
-            /*if (e.KeyValue == (char)Keys.J && pickColor)
+            if (!optionsComing)
             {
-                int mouseX = MousePosition.X;
-                int mouseY = MousePosition.Y;
-
-                Color pickedColor = 
-                pickColor = false;
-                rightDownLabelContainer.Text = "K to capture";
-
-            }*/
+                myText.SetFinalText(textParsedBox.Text);
+                textParsedBox.Text = "";
+                /*myMouse.MoveTo();
+                myMouse.LeftClick();*/
+            }
+            else
+            {
+                myText.SetFinalText(choicesAndOptionsBox.Text);
+                choicesAndOptionsBox.Text = "";
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+
+        
+
+        private void addCharacterButton_Click(object sender, EventArgs e)
         {
-            
-            int width = rightDown[0] - leftTop[0];
-            int height = rightDown[1] - leftTop[1];
-            CaptureMyScreen(height, width);
+            String charName = addCharacterBox.Text;
+            bool insertedName = false;
+            int i = 2;
+            while (!insertedName)
+            {
+                if(charButtons[i].Text == "Char" + (i + 1).ToString())
+                {
+                    charButtons[i].Text = charName;
+                    insertedName = true;
+                }
+                i++;
+                if (i > 19)
+                {
+                    insertedName = true;
+                    MessageBox.Show("You can not add more characters");
+                }
+            }
+            addCharacterBox.Text = "";
+        }
 
+        /////////////////////////////Characters Buttons/////////////////////////////
 
-            
+        private void youButton_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[0].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+
+        private void narratorButton_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[1].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+
+        private void charButton3_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[2].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+
+        private void charButton4_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[3].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+
+        private void charButton5_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[4].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+        
+        private void charButton6_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[5].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+
+        private void charButton7_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[6].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+
+        private void charButton8_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[7].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+
+        private void charButton9_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[8].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+
+        private void charButton10_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[9].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+
+        private void charButton11_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[10].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+
+        private void charButton12_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[11].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+
+        private void charButton13_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[12].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+
+        private void charButton14_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[13].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+
+        private void charButton15_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[14].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+
+        private void charButton16_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[15].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+
+        private void charButton17_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[16].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+
+        private void charButton18_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[17].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+
+        private void charButton19_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[18].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+
+        private void charButton20_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + charButtons[19].Text + "; " + myImage.GetTextParsed();
+            textParsedBox.Text = lineToAdd;
+        }
+
+        /////////////////////Choices & Options Buttons///////////////////////
+
+        private void choiceButton_Click(object sender, EventArgs e)
+        {
+            myImage.CaptureMyScreen();
+            lineToAdd = "; " + choiceButton.Text + "; " + myImage.GetTextParsed();
+            optionsComing = true;
+            choicesAndOptionsBox.Text = lineToAdd;
+        }
+
+        private void optionButton_Click(object sender, EventArgs e)
+        {
+            lineToAdd = "; " + optionButton.Text + "; ; ";
+            choicesAndOptionsBox.Text = lineToAdd;
+        }
+
+        private void premiumOptionButton_Click(object sender, EventArgs e)
+        {
+            lineToAdd = "; Premium option ; ; " ;
+            choicesAndOptionsBox.Text = lineToAdd;
+        }
+
+        private void finishOptionButton_Click(object sender, EventArgs e)
+        {
+            optionsComing = false;
+            /*myMouse.MoveTo();
+            myMouse.LeftClick();*/
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            myText.saveAndClose();
+            MessageBox.Show("Saved");
+        }
+
+        private void choicesLabel_Click(object sender, EventArgs e)
+        {
 
         }
     }
