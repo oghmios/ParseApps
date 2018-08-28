@@ -1,38 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-
 
 namespace ParseApps
 {
-
-    public partial class Form1 : Form
+    public partial class ToolBox : Form
     {
-        
-        //KeyDown = new KeyEventHandler(this, keyboard_KeyDown);
-        bool captureFirst           = false;
-        bool captureSecond          = false;
-        bool captureMousePosition   = false;
-        bool pickColor              = false;
-        bool optionsComing          = false;
+        bool optionsComing = false;
 
 
-        VirtualMouse myMouse = new VirtualMouse();
+        public static VirtualMouse myMouse;
 
-        ImagesTreatment myImage = new ImagesTreatment();
+        public static ImagesTreatment myImage;
 
         FinalText myText = new FinalText();
 
         Characters myCharacters = new Characters();
 
-        List<Button> charButtons = new List<Button>();
+        DebugWindow myDebug = new DebugWindow();
 
-        String lineToAdd = "";
-        
+        ReassignWindow myReAssign = new ReassignWindow();
 
-        delegate void SetTextCallback(string text);
-        public Form1()
+
+
+        public List<Button> charButtons = new List<Button>();
+
+        public String lineToAdd = "";
+
+        public static ImageDebug imageDebugForm = new ImageDebug();
+
+        public ToolBox(Point leftTop, Point rightDown, Point mouse, Color picked)
         {
             InitializeComponent();
             charButtons.Add(youButton);
@@ -55,78 +58,14 @@ namespace ParseApps
             charButtons.Add(charButton18);
             charButtons.Add(charButton19);
             charButtons.Add(charButton20);
-            
+
+            myMouse = new VirtualMouse(mouse);
+            myImage = new ImagesTreatment(leftTop, rightDown, picked);
         }
 
+        
 
-        ////////////////////////Keyboard controls////////////////////////////////////
-        private void CoordinatesButton_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyValue == (char)Keys.J && captureFirst)
-            {
-                myImage.SetLeftTop(MousePosition.X, MousePosition.Y);
-                lefTopLabelContainer.Text = "X: " + myImage.GetLeftTop().X + " Y: " + myImage.GetLeftTop().Y;
-                captureFirst = false;
-                captureSecond = true;
-                rightDownLabelContainer.Text = "K to capture";
-
-            }
-            if (e.KeyValue == (char)Keys.K && captureSecond)
-            {
-                myImage.SetRightDown(MousePosition.X, MousePosition.Y);
-                rightDownLabelContainer.Text = "X: " + myImage.GetRightDown().X + " Y: " + myImage.GetRightDown().Y;
-                captureFirst = false;
-                captureSecond = false;
-
-            }
-            if (e.KeyValue == (char)Keys.K && captureMousePosition)
-            {
-                myMouse.SetMouseToClick(MousePosition.X, MousePosition.Y);
-                mousePositionLabel.Text = "X: " + myMouse.GetMouseToClick().X + " Y: " + myMouse.GetMouseToClick().Y;
-                captureMousePosition = false;
-
-            }
-            if (e.KeyValue == (char)Keys.X && pickColor)
-            {
-                Rectangle bounds = Screen.GetBounds(Point.Empty);
-                Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height);
-                System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bitmap);
-                g.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
-                myImage.SetBalloonColor(bitmap.GetPixel(MousePosition.X, MousePosition.Y));
-                pickColor = false;
-                colorPickerLabel.Text = "R: " + myImage.GetBallonColor().R + " G: " + myImage.GetBallonColor().G + " B: " + myImage.GetBallonColor().B;
-
-            }
-        }
-
-        private void CoordinatesButton_Click(object sender, EventArgs e)
-        {
-            captureFirst = true;
-            lefTopLabelContainer.Text = "J to capture";
-
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            myImage.CaptureMyScreen();
-            textParsedBox.Text = myImage.GetTextParsed();
-            imagePickedBox.Image = myImage.GetImageResult();
-            /*myMouse.MoveTo();
-            myMouse.LeftClick();*/
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            captureMousePosition = true;
-            mousePositionLabel.Text = "Press K to capture";
-        }
-        private void colorPickerButton_Click(object sender, EventArgs e)
-        {
-            pickColor = true;
-            colorPickerLabel.Text = "X to capture color";
-        }
-
-        private void addTextButton_Click(object sender, EventArgs e)
+        private void AddTextButton_Click(object sender, EventArgs e)
         {
             if (!optionsComing)
             {
@@ -142,18 +81,14 @@ namespace ParseApps
             }
         }
 
-
-
-        
-
-        private void addCharacterButton_Click(object sender, EventArgs e)
+        private void AddCharacterButton_Click(object sender, EventArgs e)
         {
             String charName = addCharacterBox.Text;
             bool insertedName = false;
             int i = 2;
             while (!insertedName)
             {
-                if(charButtons[i].Text == "Char" + (i + 1).ToString())
+                if (charButtons[i].Text == "Char" + (i + 1).ToString())
                 {
                     charButtons[i].Text = charName;
                     insertedName = true;
@@ -204,7 +139,7 @@ namespace ParseApps
             lineToAdd = "; " + charButtons[4].Text + "; " + myImage.GetTextParsed();
             textParsedBox.Text = lineToAdd;
         }
-        
+
         private void charButton6_Click(object sender, EventArgs e)
         {
             myImage.CaptureMyScreen();
@@ -328,7 +263,7 @@ namespace ParseApps
 
         private void premiumOptionButton_Click(object sender, EventArgs e)
         {
-            lineToAdd = "; Premium option ; ; " ;
+            lineToAdd = "; Premium option ; ; ";
             choicesAndOptionsBox.Text = lineToAdd;
         }
 
@@ -345,12 +280,25 @@ namespace ParseApps
             MessageBox.Show("Saved");
         }
 
-        private void choicesLabel_Click(object sender, EventArgs e)
+        private void debugButton_Click(object sender, EventArgs e)
         {
+            if(!myDebug.IsHandleCreated)
+            {
+                myDebug = new DebugWindow();
+            }
 
+            
+            myDebug.Show();
+        }
+
+        private void reasignButton_Click(object sender, EventArgs e)
+        {
+            if (!myReAssign.IsHandleCreated)
+            {
+                myReAssign = new ReassignWindow();
+            }
+            
+            myReAssign.Show();
         }
     }
 }
-
-
-

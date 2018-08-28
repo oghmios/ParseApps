@@ -57,19 +57,49 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Characters.cs" />
-    <Compile Include="FinalText.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="DebugWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="DebugWindow.Designer.cs">
+      <DependentUpon>DebugWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinalText.cs" />
+    <Compile Include="ReassignWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReassignWindow.Designer.cs">
+      <DependentUpon>ReassignWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolBox.Designer.cs">
+      <DependentUpon>ToolBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainParseApps.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainParseApps.Designer.cs">
+      <DependentUpon>MainParseApps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageDebug.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageDebug.Designer.cs">
+      <DependentUpon>ImageDebug.cs</DependentUpon>
     </Compile>
     <Compile Include="ImagesTreatment.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VirtualMouse.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="DebugWindow.resx">
+      <DependentUpon>DebugWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainParseApps.resx">
+      <DependentUpon>MainParseApps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageDebug.resx">
+      <DependentUpon>ImageDebug.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -81,6 +111,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReassignWindow.resx">
+      <DependentUpon>ReassignWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolBox.resx">
+      <DependentUpon>ToolBox.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

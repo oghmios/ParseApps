@@ -21,10 +21,14 @@ D:\Git\ParseApps\ParseApps\bin\Release\ParseApps.exe
 D:\Git\ParseApps\ParseApps\bin\Release\ParseApps.pdb
 D:\Git\ParseApps\ParseApps\bin\Release\leptonica.net.dll
 D:\Git\ParseApps\ParseApps\bin\Release\tesseract.net.dll
-D:\Git\ParseApps\ParseApps\obj\Release\ParseApps.Form1.resources
 D:\Git\ParseApps\ParseApps\obj\Release\ParseApps.Properties.Resources.resources
 D:\Git\ParseApps\ParseApps\obj\Release\ParseApps.csproj.GenerateResource.cache
 D:\Git\ParseApps\ParseApps\obj\Release\ParseApps.csproj.CoreCompileInputs.cache
 D:\Git\ParseApps\ParseApps\obj\Release\ParseApps.csproj.CopyComplete
 D:\Git\ParseApps\ParseApps\obj\Release\ParseApps.exe
 D:\Git\ParseApps\ParseApps\obj\Release\ParseApps.pdb
+D:\Git\ParseApps\ParseApps\obj\Release\ParseApps.DebugWindow.resources
+D:\Git\ParseApps\ParseApps\obj\Release\ParseApps.MainParseApps.resources
+D:\Git\ParseApps\ParseApps\obj\Release\ParseApps.ImageDebug.resources
+D:\Git\ParseApps\ParseApps\obj\Release\ParseApps.ReassignWindow.resources
+D:\Git\ParseApps\ParseApps\obj\Release\ParseApps.ToolBox.resources

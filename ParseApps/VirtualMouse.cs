@@ -6,11 +6,11 @@ namespace ParseApps
 {
     public class VirtualMouse
     {
-        private Point mouseToClick = new Point(0, 0);
+        private Point mouseToClick;
 
-        public VirtualMouse()
+        public VirtualMouse(Point mouse)
         {
-
+            mouseToClick = new Point(mouse.X, mouse.Y);
         }
 
 
