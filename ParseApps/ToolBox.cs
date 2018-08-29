@@ -306,5 +306,10 @@ namespace ParseApps
             
             myReAssign.Show();
         }
+
+        private void choicesAndOptionsBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

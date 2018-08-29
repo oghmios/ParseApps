@@ -109,5 +109,10 @@ namespace ParseApps
 
             }
         }
+
+        private void colorPickerLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
