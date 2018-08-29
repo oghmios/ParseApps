@@ -13,7 +13,10 @@ namespace ParseApps
             mouseToClick = new Point(mouse.X, mouse.Y);
         }
 
+        public VirtualMouse()
+        {
 
+        }
 
         // Getters & Setters
 
@@ -45,6 +48,7 @@ namespace ParseApps
         }
         public void MoveTo()
         {
+            
             mouse_event(MOUSEEVENTF_MOVE, mouseToClick.X, mouseToClick.Y, 0, 0);
         }
         public void LeftClick()

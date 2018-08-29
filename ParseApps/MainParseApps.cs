@@ -25,6 +25,8 @@ namespace ParseApps
         Color picked = Color.FromArgb(253, 253, 254);
         
 
+        
+
         delegate void SetTextCallback(string text);
         public MainParseApps()
         {
@@ -109,8 +111,15 @@ namespace ParseApps
                 ToolBox myTool = new ToolBox(leftTop, rightDown, mouse, picked);
                 myTool.Show();
                 this.Hide();
+                myTool.FormClosed += MyTool_FormClosed;
 
             }
+        }
+
+        private void MyTool_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
+            //throw new NotImplementedException();
         }
     }
 }

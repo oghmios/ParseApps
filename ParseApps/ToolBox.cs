@@ -27,6 +27,8 @@ namespace ParseApps
 
         ReassignWindow myReAssign = new ReassignWindow();
 
+        Point actualPosMouse = new Point(0, 0);
+
 
 
         public List<Button> charButtons = new List<Button>();
@@ -71,13 +73,17 @@ namespace ParseApps
             {
                 myText.SetFinalText(textParsedBox.Text);
                 textParsedBox.Text = "";
-                /*myMouse.MoveTo();
-                myMouse.LeftClick();*/
+                actualPosMouse = Cursor.Position;
+                Cursor.Position = myMouse.GetMouseToClick();
+                myMouse.LeftClick();
+                myMouse.LeftClick();
+                Cursor.Position = actualPosMouse;
             }
             else
             {
                 myText.SetFinalText(choicesAndOptionsBox.Text);
                 choicesAndOptionsBox.Text = "";
+                
             }
         }
 

@@ -29,6 +29,10 @@ namespace ParseApps
             this.rightDown = new Point(rightDown.X, rightDown.Y);
             balloonColor = picked;
         }
+        public ImagesTreatment()
+        {
+
+        }
 
         // Getters & Setters
 

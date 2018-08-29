@@ -52,10 +52,10 @@
             // 
             // coordinatesButton
             // 
-            this.coordinatesButton.Location = new System.Drawing.Point(37, 59);
-            this.coordinatesButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.coordinatesButton.Location = new System.Drawing.Point(28, 48);
+            this.coordinatesButton.Margin = new System.Windows.Forms.Padding(2);
             this.coordinatesButton.Name = "coordinatesButton";
-            this.coordinatesButton.Size = new System.Drawing.Size(129, 27);
+            this.coordinatesButton.Size = new System.Drawing.Size(97, 22);
             this.coordinatesButton.TabIndex = 4;
             this.coordinatesButton.Text = "Add coordinates";
             this.coordinatesButton.UseVisualStyleBackColor = true;
@@ -71,47 +71,43 @@
             // lefTopLabel
             // 
             this.lefTopLabel.AutoSize = true;
-            this.lefTopLabel.Location = new System.Drawing.Point(37, 107);
-            this.lefTopLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lefTopLabel.Location = new System.Drawing.Point(28, 87);
             this.lefTopLabel.Name = "lefTopLabel";
-            this.lefTopLabel.Size = new System.Drawing.Size(108, 17);
+            this.lefTopLabel.Size = new System.Drawing.Size(81, 13);
             this.lefTopLabel.TabIndex = 9;
             this.lefTopLabel.Text = "LeftTop Corner:";
             // 
             // lefTopLabelContainer
             // 
             this.lefTopLabelContainer.AutoSize = true;
-            this.lefTopLabelContainer.Location = new System.Drawing.Point(219, 107);
-            this.lefTopLabelContainer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lefTopLabelContainer.Location = new System.Drawing.Point(164, 87);
             this.lefTopLabelContainer.Name = "lefTopLabelContainer";
-            this.lefTopLabelContainer.Size = new System.Drawing.Size(0, 17);
+            this.lefTopLabelContainer.Size = new System.Drawing.Size(0, 13);
             this.lefTopLabelContainer.TabIndex = 10;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 143);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(28, 116);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(127, 17);
+            this.label3.Size = new System.Drawing.Size(97, 13);
             this.label3.TabIndex = 11;
             this.label3.Text = "RightDown Corner:";
             // 
             // rightDownLabelContainer
             // 
             this.rightDownLabelContainer.AutoSize = true;
-            this.rightDownLabelContainer.Location = new System.Drawing.Point(219, 143);
-            this.rightDownLabelContainer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.rightDownLabelContainer.Location = new System.Drawing.Point(164, 116);
             this.rightDownLabelContainer.Name = "rightDownLabelContainer";
-            this.rightDownLabelContainer.Size = new System.Drawing.Size(0, 17);
+            this.rightDownLabelContainer.Size = new System.Drawing.Size(0, 13);
             this.rightDownLabelContainer.TabIndex = 12;
             // 
             // mousePositionButton
             // 
-            this.mousePositionButton.Location = new System.Drawing.Point(37, 194);
-            this.mousePositionButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.mousePositionButton.Location = new System.Drawing.Point(28, 158);
+            this.mousePositionButton.Margin = new System.Windows.Forms.Padding(2);
             this.mousePositionButton.Name = "mousePositionButton";
-            this.mousePositionButton.Size = new System.Drawing.Size(108, 31);
+            this.mousePositionButton.Size = new System.Drawing.Size(81, 25);
             this.mousePositionButton.TabIndex = 13;
             this.mousePositionButton.Text = "Mouse Pos.";
             this.mousePositionButton.UseVisualStyleBackColor = true;
@@ -120,10 +116,9 @@
             // 
             // colorPickerButton
             // 
-            this.colorPickerButton.Location = new System.Drawing.Point(203, 58);
-            this.colorPickerButton.Margin = new System.Windows.Forms.Padding(4);
+            this.colorPickerButton.Location = new System.Drawing.Point(152, 47);
             this.colorPickerButton.Name = "colorPickerButton";
-            this.colorPickerButton.Size = new System.Drawing.Size(100, 28);
+            this.colorPickerButton.Size = new System.Drawing.Size(75, 23);
             this.colorPickerButton.TabIndex = 14;
             this.colorPickerButton.Text = "Pick color";
             this.colorPickerButton.UseVisualStyleBackColor = true;
@@ -133,28 +128,27 @@
             // colorPickerLabel
             // 
             this.colorPickerLabel.AutoSize = true;
-            this.colorPickerLabel.Location = new System.Drawing.Point(325, 64);
-            this.colorPickerLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.colorPickerLabel.Location = new System.Drawing.Point(244, 52);
             this.colorPickerLabel.Name = "colorPickerLabel";
-            this.colorPickerLabel.Size = new System.Drawing.Size(86, 17);
+            this.colorPickerLabel.Size = new System.Drawing.Size(66, 13);
             this.colorPickerLabel.TabIndex = 15;
             this.colorPickerLabel.Text = "Color picked";
             // 
             // mousePositionLabel
             // 
             this.mousePositionLabel.AutoSize = true;
-            this.mousePositionLabel.Location = new System.Drawing.Point(173, 202);
-            this.mousePositionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.mousePositionLabel.Location = new System.Drawing.Point(130, 164);
             this.mousePositionLabel.Name = "mousePositionLabel";
-            this.mousePositionLabel.Size = new System.Drawing.Size(0, 17);
+            this.mousePositionLabel.Size = new System.Drawing.Size(0, 13);
             this.mousePositionLabel.TabIndex = 16;
             // 
             // startButton
             // 
             this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.startButton.Location = new System.Drawing.Point(501, 185);
+            this.startButton.Location = new System.Drawing.Point(376, 150);
+            this.startButton.Margin = new System.Windows.Forms.Padding(2);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(130, 46);
+            this.startButton.Size = new System.Drawing.Size(98, 37);
             this.startButton.TabIndex = 49;
             this.startButton.Text = "START";
             this.startButton.UseVisualStyleBackColor = true;
@@ -162,9 +156,9 @@
             // 
             // MainParseApps
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 325);
+            this.ClientSize = new System.Drawing.Size(586, 264);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.mousePositionLabel);
             this.Controls.Add(this.colorPickerLabel);
@@ -175,7 +169,7 @@
             this.Controls.Add(this.lefTopLabelContainer);
             this.Controls.Add(this.lefTopLabel);
             this.Controls.Add(this.coordinatesButton);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainParseApps";
             this.Text = "ParseApps";
             this.ResumeLayout(false);
