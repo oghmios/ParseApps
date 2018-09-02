@@ -132,12 +132,14 @@ namespace ParseApps{
 
         }
 
-        public Object[] CaptureDialogBalloon(Bitmap captureBitmap, int[] leftTopBalloon, int[] rightDownBalloon){
+        public Object[] CaptureDialogBalloon(Bitmap captureBitmap){
 
             Object[] result = new Object[3];
 
             //imagePickedBox.Image = captureBitmap;
             Color auxColor;
+            int[] leftTopBalloon = { 0, 0 };
+            int[] rightDownBalloon = { 0, 0 };
             int i = 0;
             int j = 0;
             int k = 0;
@@ -311,13 +313,11 @@ namespace ParseApps{
                 captureGraphics.CopyFromScreen(captureRectangle.Left, captureRectangle.Top, 0, 0, captureRectangle.Size);
 
                 // Capturing image and saving
-                int[] leftTopBalloon = { 0, 0 };
-                int[] rightDownBalloon = { 0, 0 };
-                Object[] resultDialogBallon = CaptureDialogBalloon(captureBitmap, leftTopBalloon, rightDownBalloon);
+                Object[] resultDialogBallon = CaptureDialogBalloon(captureBitmap);
 
                 captureBitmap = (Bitmap) resultDialogBallon[0];
-                leftTopBalloon = (int[]) resultDialogBallon[1];
-                rightDownBalloon = (int[]) resultDialogBallon[2];
+                int[] leftTopBalloon = (int[]) resultDialogBallon[1];
+                int[] rightDownBalloon = (int[]) resultDialogBallon[2];
 
                 int widthBalloon = rightDownBalloon[0] - leftTopBalloon[0];
                 int heightBalloon = rightDownBalloon[1] - leftTopBalloon[1];
