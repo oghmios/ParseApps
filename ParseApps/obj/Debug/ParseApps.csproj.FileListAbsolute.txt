@@ -64,3 +64,14 @@ D:\Git\ParseApps\ParseApps\obj\Debug\ParseApps.ToolBox.resources
 D:\Git\ParseApps\ParseApps\obj\Debug\ParseApps.DebugWindow.resources
 D:\Git\ParseApps\ParseApps\obj\Debug\ParseApps.MainParseApps.resources
 D:\Git\ParseApps\ParseApps\obj\Debug\ParseApps.ReassignWindow.resources
+D:\GITHUB\ParseApps\ParseApps\ParseApps\bin\Debug\ParseApps.exe.config
+D:\GITHUB\ParseApps\ParseApps\ParseApps\obj\Debug\ParseApps.exe
+D:\GITHUB\ParseApps\ParseApps\ParseApps\obj\Debug\ParseApps.pdb
+D:\GITHUB\ParseApps\ParseApps\ParseApps\obj\Debug\ParseApps.csprojResolveAssemblyReference.cache
+D:\GITHUB\ParseApps\ParseApps\ParseApps\obj\Debug\ParseApps.DebugWindow.resources
+D:\GITHUB\ParseApps\ParseApps\ParseApps\obj\Debug\ParseApps.MainParseApps.resources
+D:\GITHUB\ParseApps\ParseApps\ParseApps\obj\Debug\ParseApps.ImageDebug.resources
+D:\GITHUB\ParseApps\ParseApps\ParseApps\obj\Debug\ParseApps.Properties.Resources.resources
+D:\GITHUB\ParseApps\ParseApps\ParseApps\obj\Debug\ParseApps.ReassignWindow.resources
+D:\GITHUB\ParseApps\ParseApps\ParseApps\obj\Debug\ParseApps.ToolBox.resources
+D:\GITHUB\ParseApps\ParseApps\ParseApps\obj\Debug\ParseApps.csproj.GenerateResource.Cache
