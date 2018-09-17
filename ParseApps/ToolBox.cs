@@ -98,6 +98,7 @@ namespace ParseApps
                 {
                     charButtons[i].Text = charName;
                     insertedName = true;
+                    removeCharInput.Items.Add(charName);
                 }
                 i++;
                 if (i > 19)
@@ -305,6 +306,31 @@ namespace ParseApps
             }
             
             myReAssign.Show();
+        }
+
+        private void removeCharButton_Click(object sender, EventArgs e)
+        {
+            String charToRemove = removeCharInput.Text;
+            bool insertedName = false;
+            int i = 2;
+            while (!insertedName)
+            {
+                if (charButtons[i].Text == charToRemove)
+                {
+                    charButtons[i].Text = "Char" + (i + 1).ToString();
+                    removeCharInput.Items.Remove(removeCharInput.Text);
+                    removeCharInput.DownButton();
+                    insertedName = true;
+                    
+                }
+                i++;
+                if (i > 19)
+                {
+                    insertedName = true;
+                    MessageBox.Show(charToRemove + " doesn't exist");
+                }
+            }
+            
         }
     }
 }
