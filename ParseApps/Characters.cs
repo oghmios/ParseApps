@@ -1,6 +1,12 @@
-﻿namespace ParseApps{
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-    class Characters{
-
+namespace ParseApps
+{
+    class Characters
+    {
     }
 }

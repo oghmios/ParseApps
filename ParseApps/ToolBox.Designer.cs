@@ -69,29 +69,16 @@
             // 
             // choicesAndOptionsBox
             // 
-<<<<<<< HEAD
             this.choicesAndOptionsBox.Location = new System.Drawing.Point(28, 374);
             this.choicesAndOptionsBox.Margin = new System.Windows.Forms.Padding(2);
             this.choicesAndOptionsBox.Multiline = true;
             this.choicesAndOptionsBox.Name = "choicesAndOptionsBox";
             this.choicesAndOptionsBox.Size = new System.Drawing.Size(513, 34);
-=======
-            this.choicesAndOptionsBox.Location = new System.Drawing.Point(35, 305);
-            this.choicesAndOptionsBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.choicesAndOptionsBox.Multiline = true;
-            this.choicesAndOptionsBox.Name = "choicesAndOptionsBox";
-            this.choicesAndOptionsBox.Size = new System.Drawing.Size(513, 58);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.choicesAndOptionsBox.TabIndex = 47;
-            this.choicesAndOptionsBox.TextChanged += new System.EventHandler(this.choicesAndOptionsBox_TextChanged);
             // 
             // addCharacterButton
             // 
-<<<<<<< HEAD
             this.addCharacterButton.Location = new System.Drawing.Point(338, 260);
-=======
-            this.addCharacterButton.Location = new System.Drawing.Point(352, 239);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.addCharacterButton.Name = "addCharacterButton";
             this.addCharacterButton.Size = new System.Drawing.Size(128, 23);
             this.addCharacterButton.TabIndex = 45;
@@ -101,13 +88,8 @@
             // 
             // addCharacterBox
             // 
-<<<<<<< HEAD
             this.addCharacterBox.Location = new System.Drawing.Point(112, 262);
             this.addCharacterBox.Margin = new System.Windows.Forms.Padding(2);
-=======
-            this.addCharacterBox.Location = new System.Drawing.Point(126, 241);
-            this.addCharacterBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.addCharacterBox.Multiline = true;
             this.addCharacterBox.Name = "addCharacterBox";
             this.addCharacterBox.Size = new System.Drawing.Size(200, 21);
@@ -115,11 +97,7 @@
             // 
             // finishOptionButton
             // 
-<<<<<<< HEAD
             this.finishOptionButton.Location = new System.Drawing.Point(361, 424);
-=======
-            this.finishOptionButton.Location = new System.Drawing.Point(473, 379);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.finishOptionButton.Name = "finishOptionButton";
             this.finishOptionButton.Size = new System.Drawing.Size(75, 23);
             this.finishOptionButton.TabIndex = 43;
@@ -129,11 +107,7 @@
             // 
             // premiumOptionButton
             // 
-<<<<<<< HEAD
             this.premiumOptionButton.Location = new System.Drawing.Point(250, 424);
-=======
-            this.premiumOptionButton.Location = new System.Drawing.Point(329, 379);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.premiumOptionButton.Name = "premiumOptionButton";
             this.premiumOptionButton.Size = new System.Drawing.Size(75, 23);
             this.premiumOptionButton.TabIndex = 42;
@@ -143,11 +117,7 @@
             // 
             // optionButton
             // 
-<<<<<<< HEAD
             this.optionButton.Location = new System.Drawing.Point(141, 424);
-=======
-            this.optionButton.Location = new System.Drawing.Point(181, 379);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.optionButton.Name = "optionButton";
             this.optionButton.Size = new System.Drawing.Size(75, 23);
             this.optionButton.TabIndex = 41;
@@ -157,11 +127,7 @@
             // 
             // choiceButton
             // 
-<<<<<<< HEAD
             this.choiceButton.Location = new System.Drawing.Point(28, 424);
-=======
-            this.choiceButton.Location = new System.Drawing.Point(38, 379);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.choiceButton.Name = "choiceButton";
             this.choiceButton.Size = new System.Drawing.Size(75, 23);
             this.choiceButton.TabIndex = 40;
@@ -172,11 +138,7 @@
             // choicesLabel
             // 
             this.choicesLabel.AutoSize = true;
-<<<<<<< HEAD
             this.choicesLabel.Location = new System.Drawing.Point(238, 349);
-=======
-            this.choicesLabel.Location = new System.Drawing.Point(245, 276);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.choicesLabel.Name = "choicesLabel";
             this.choicesLabel.Size = new System.Drawing.Size(105, 13);
             this.choicesLabel.TabIndex = 39;
@@ -184,11 +146,7 @@
             // 
             // charButton16
             // 
-<<<<<<< HEAD
             this.charButton16.Location = new System.Drawing.Point(35, 208);
-=======
-            this.charButton16.Location = new System.Drawing.Point(35, 197);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.charButton16.Name = "charButton16";
             this.charButton16.Size = new System.Drawing.Size(75, 23);
             this.charButton16.TabIndex = 38;
@@ -198,11 +156,7 @@
             // 
             // charButton17
             // 
-<<<<<<< HEAD
             this.charButton17.Location = new System.Drawing.Point(148, 207);
-=======
-            this.charButton17.Location = new System.Drawing.Point(151, 196);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.charButton17.Name = "charButton17";
             this.charButton17.Size = new System.Drawing.Size(75, 23);
             this.charButton17.TabIndex = 37;
@@ -212,11 +166,7 @@
             // 
             // charButton18
             // 
-<<<<<<< HEAD
             this.charButton18.Location = new System.Drawing.Point(257, 207);
-=======
-            this.charButton18.Location = new System.Drawing.Point(260, 196);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.charButton18.Name = "charButton18";
             this.charButton18.Size = new System.Drawing.Size(75, 23);
             this.charButton18.TabIndex = 36;
@@ -226,11 +176,7 @@
             // 
             // charButton19
             // 
-<<<<<<< HEAD
             this.charButton19.Location = new System.Drawing.Point(368, 208);
-=======
-            this.charButton19.Location = new System.Drawing.Point(371, 197);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.charButton19.Name = "charButton19";
             this.charButton19.Size = new System.Drawing.Size(75, 23);
             this.charButton19.TabIndex = 35;
@@ -240,11 +186,7 @@
             // 
             // charButton20
             // 
-<<<<<<< HEAD
             this.charButton20.Location = new System.Drawing.Point(473, 208);
-=======
-            this.charButton20.Location = new System.Drawing.Point(476, 197);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.charButton20.Name = "charButton20";
             this.charButton20.Size = new System.Drawing.Size(75, 23);
             this.charButton20.TabIndex = 34;
@@ -254,11 +196,7 @@
             // 
             // charButton11
             // 
-<<<<<<< HEAD
             this.charButton11.Location = new System.Drawing.Point(35, 161);
-=======
-            this.charButton11.Location = new System.Drawing.Point(35, 150);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.charButton11.Name = "charButton11";
             this.charButton11.Size = new System.Drawing.Size(75, 23);
             this.charButton11.TabIndex = 33;
@@ -268,11 +206,7 @@
             // 
             // charButton12
             // 
-<<<<<<< HEAD
             this.charButton12.Location = new System.Drawing.Point(148, 161);
-=======
-            this.charButton12.Location = new System.Drawing.Point(151, 150);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.charButton12.Name = "charButton12";
             this.charButton12.Size = new System.Drawing.Size(75, 23);
             this.charButton12.TabIndex = 32;
@@ -282,11 +216,7 @@
             // 
             // charButton13
             // 
-<<<<<<< HEAD
             this.charButton13.Location = new System.Drawing.Point(257, 161);
-=======
-            this.charButton13.Location = new System.Drawing.Point(260, 150);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.charButton13.Name = "charButton13";
             this.charButton13.Size = new System.Drawing.Size(75, 23);
             this.charButton13.TabIndex = 31;
@@ -296,11 +226,7 @@
             // 
             // charButton14
             // 
-<<<<<<< HEAD
             this.charButton14.Location = new System.Drawing.Point(368, 161);
-=======
-            this.charButton14.Location = new System.Drawing.Point(371, 150);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.charButton14.Name = "charButton14";
             this.charButton14.Size = new System.Drawing.Size(75, 23);
             this.charButton14.TabIndex = 30;
@@ -310,11 +236,7 @@
             // 
             // charButton15
             // 
-<<<<<<< HEAD
             this.charButton15.Location = new System.Drawing.Point(473, 161);
-=======
-            this.charButton15.Location = new System.Drawing.Point(476, 150);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.charButton15.Name = "charButton15";
             this.charButton15.Size = new System.Drawing.Size(75, 23);
             this.charButton15.TabIndex = 29;
@@ -324,11 +246,7 @@
             // 
             // charButton6
             // 
-<<<<<<< HEAD
             this.charButton6.Location = new System.Drawing.Point(32, 113);
-=======
-            this.charButton6.Location = new System.Drawing.Point(35, 102);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.charButton6.Name = "charButton6";
             this.charButton6.Size = new System.Drawing.Size(75, 23);
             this.charButton6.TabIndex = 28;
@@ -338,11 +256,7 @@
             // 
             // charButton7
             // 
-<<<<<<< HEAD
             this.charButton7.Location = new System.Drawing.Point(148, 113);
-=======
-            this.charButton7.Location = new System.Drawing.Point(151, 102);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.charButton7.Name = "charButton7";
             this.charButton7.Size = new System.Drawing.Size(75, 23);
             this.charButton7.TabIndex = 27;
@@ -352,11 +266,7 @@
             // 
             // charButton8
             // 
-<<<<<<< HEAD
             this.charButton8.Location = new System.Drawing.Point(257, 112);
-=======
-            this.charButton8.Location = new System.Drawing.Point(260, 101);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.charButton8.Name = "charButton8";
             this.charButton8.Size = new System.Drawing.Size(75, 23);
             this.charButton8.TabIndex = 26;
@@ -366,11 +276,7 @@
             // 
             // charButton9
             // 
-<<<<<<< HEAD
             this.charButton9.Location = new System.Drawing.Point(368, 112);
-=======
-            this.charButton9.Location = new System.Drawing.Point(371, 101);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.charButton9.Name = "charButton9";
             this.charButton9.Size = new System.Drawing.Size(75, 23);
             this.charButton9.TabIndex = 25;
@@ -380,11 +286,7 @@
             // 
             // charButton10
             // 
-<<<<<<< HEAD
             this.charButton10.Location = new System.Drawing.Point(473, 112);
-=======
-            this.charButton10.Location = new System.Drawing.Point(476, 101);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.charButton10.Name = "charButton10";
             this.charButton10.Size = new System.Drawing.Size(75, 23);
             this.charButton10.TabIndex = 24;
@@ -394,11 +296,7 @@
             // 
             // charButton5
             // 
-<<<<<<< HEAD
             this.charButton5.Location = new System.Drawing.Point(473, 61);
-=======
-            this.charButton5.Location = new System.Drawing.Point(476, 50);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.charButton5.Name = "charButton5";
             this.charButton5.Size = new System.Drawing.Size(75, 23);
             this.charButton5.TabIndex = 23;
@@ -408,11 +306,7 @@
             // 
             // charButton4
             // 
-<<<<<<< HEAD
             this.charButton4.Location = new System.Drawing.Point(368, 63);
-=======
-            this.charButton4.Location = new System.Drawing.Point(371, 52);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.charButton4.Name = "charButton4";
             this.charButton4.Size = new System.Drawing.Size(75, 23);
             this.charButton4.TabIndex = 22;
@@ -422,11 +316,7 @@
             // 
             // charButton3
             // 
-<<<<<<< HEAD
             this.charButton3.Location = new System.Drawing.Point(257, 63);
-=======
-            this.charButton3.Location = new System.Drawing.Point(260, 52);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.charButton3.Name = "charButton3";
             this.charButton3.Size = new System.Drawing.Size(75, 23);
             this.charButton3.TabIndex = 21;
@@ -436,11 +326,7 @@
             // 
             // narratorButton
             // 
-<<<<<<< HEAD
             this.narratorButton.Location = new System.Drawing.Point(148, 62);
-=======
-            this.narratorButton.Location = new System.Drawing.Point(151, 51);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.narratorButton.Name = "narratorButton";
             this.narratorButton.Size = new System.Drawing.Size(75, 23);
             this.narratorButton.TabIndex = 20;
@@ -450,11 +336,7 @@
             // 
             // youButton
             // 
-<<<<<<< HEAD
             this.youButton.Location = new System.Drawing.Point(32, 63);
-=======
-            this.youButton.Location = new System.Drawing.Point(35, 52);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.youButton.Name = "youButton";
             this.youButton.Size = new System.Drawing.Size(75, 23);
             this.youButton.TabIndex = 19;
@@ -464,15 +346,9 @@
             // 
             // addTextButton
             // 
-<<<<<<< HEAD
             this.addTextButton.Location = new System.Drawing.Point(285, 500);
             this.addTextButton.Name = "addTextButton";
             this.addTextButton.Size = new System.Drawing.Size(119, 23);
-=======
-            this.addTextButton.Location = new System.Drawing.Point(446, 482);
-            this.addTextButton.Name = "addTextButton";
-            this.addTextButton.Size = new System.Drawing.Size(102, 23);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.addTextButton.TabIndex = 18;
             this.addTextButton.Text = "Add and Continue";
             this.addTextButton.UseVisualStyleBackColor = true;
@@ -481,11 +357,7 @@
             // charactersLabel
             // 
             this.charactersLabel.AutoSize = true;
-<<<<<<< HEAD
             this.charactersLabel.Location = new System.Drawing.Point(265, 29);
-=======
-            this.charactersLabel.Location = new System.Drawing.Point(268, 18);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.charactersLabel.Name = "charactersLabel";
             this.charactersLabel.Size = new System.Drawing.Size(58, 13);
             this.charactersLabel.TabIndex = 17;
@@ -493,11 +365,7 @@
             // 
             // saveButton
             // 
-<<<<<<< HEAD
             this.saveButton.Location = new System.Drawing.Point(338, 617);
-=======
-            this.saveButton.Location = new System.Drawing.Point(473, 586);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 46;
@@ -507,30 +375,17 @@
             // 
             // textParsedBox
             // 
-<<<<<<< HEAD
             this.textParsedBox.Location = new System.Drawing.Point(28, 473);
             this.textParsedBox.Margin = new System.Windows.Forms.Padding(2);
             this.textParsedBox.Multiline = true;
             this.textParsedBox.Name = "textParsedBox";
             this.textParsedBox.Size = new System.Drawing.Size(231, 80);
-=======
-            this.textParsedBox.Location = new System.Drawing.Point(35, 420);
-            this.textParsedBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textParsedBox.Multiline = true;
-            this.textParsedBox.Name = "textParsedBox";
-            this.textParsedBox.Size = new System.Drawing.Size(406, 148);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.textParsedBox.TabIndex = 48;
             // 
             // debugButton
             // 
-<<<<<<< HEAD
             this.debugButton.Location = new System.Drawing.Point(147, 617);
             this.debugButton.Margin = new System.Windows.Forms.Padding(2);
-=======
-            this.debugButton.Location = new System.Drawing.Point(35, 586);
-            this.debugButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.debugButton.Name = "debugButton";
             this.debugButton.Size = new System.Drawing.Size(68, 23);
             this.debugButton.TabIndex = 49;
@@ -540,17 +395,10 @@
             // 
             // reasignButton
             // 
-<<<<<<< HEAD
             this.reasignButton.Location = new System.Drawing.Point(241, 617);
             this.reasignButton.Margin = new System.Windows.Forms.Padding(2);
             this.reasignButton.Name = "reasignButton";
             this.reasignButton.Size = new System.Drawing.Size(85, 23);
-=======
-            this.reasignButton.Location = new System.Drawing.Point(257, 586);
-            this.reasignButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.reasignButton.Name = "reasignButton";
-            this.reasignButton.Size = new System.Drawing.Size(75, 23);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.reasignButton.TabIndex = 50;
             this.reasignButton.Text = "ReAssign";
             this.reasignButton.UseVisualStyleBackColor = true;
@@ -589,14 +437,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(573, 768);
             this.Controls.Add(this.removeCharButton);
             this.Controls.Add(this.removeCharInput);
             this.Controls.Add(this.removeCharLabel);
-=======
-            this.ClientSize = new System.Drawing.Size(573, 644);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.Controls.Add(this.reasignButton);
             this.Controls.Add(this.debugButton);
             this.Controls.Add(this.textParsedBox);
@@ -631,11 +475,7 @@
             this.Controls.Add(this.youButton);
             this.Controls.Add(this.addTextButton);
             this.Controls.Add(this.charactersLabel);
-<<<<<<< HEAD
             this.Margin = new System.Windows.Forms.Padding(2);
-=======
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 79d67e7968cfa370129d62ad5ab3d967c7fbd6f9
             this.Name = "ToolBox";
             this.Text = "ToolBox";
             this.ResumeLayout(false);
